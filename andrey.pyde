@@ -1,16 +1,22 @@
-x = 0
-a = 0 
-g = 0
+x = 200
+y = 150
+
 def setup():
-    size(600,600)
+    size(400,400)
+    rectMode(CENTER)
+    frameRate(60)
 def draw():
-    global a,g
-    y = 0
-    x = 0
-    while x < width:
-        fill(random(100,250),random(100,250),random(100,250))
-        ellipse(x + a,y + g,5,5)
-        x = x + 5
-        y = y + 5
-    a = a - 5
-    g = g + 5
+    global x,y
+    background(0)
+    fill(225,225,0)
+    if mousePressed:
+        if mouseX > (x-25) and mouseX < (x+25) and mouseY > (y-25) and mouseY < (y+25):
+            mouseDragged()
+    rect(x,y,50,50)
+def mouseDragged():
+    global x,y
+    x = mouseX
+    y = mouseY
+    if x > width:
+        x = width
+    if x > 0:
